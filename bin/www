@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+console.log("Starting app from www");
 var app = require('../app');
 var debug = require('debug')('ForbiddenTontine:server');
 var http = require('http');
@@ -12,6 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
+console.log("Setting ports");
 var port = normalizePort(process.env.OPENSHIFT_NODEJS_PORT|| '3000');
 app.set('port', port);
 app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
