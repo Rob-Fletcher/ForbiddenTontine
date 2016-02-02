@@ -21,8 +21,8 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-    margin: 20px 20px 20px 20px;
+    background-color: #666666;
+    margin: 10px 0px 10px 0px;
 }
 .nav li {
     float: left;
@@ -46,16 +46,44 @@ body {
 /**************************************
       main container
 **************************************/
-#main-container{
-    border: 3px solid #333;
-    margin: 20px 20px 20px 20px;
+.main-container{
+    border: 2px solid #666666;
+    margin: 10px 0px 10px 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     clear: both;
+    float: left;
+    width: 70%;
+}
+.main-container-blog {
+    background-color: #cccccc;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.main-container-blog h2 {
+    border-bottom: 1px solid black;
 }
 
 /****************************************
          footer
 *****************************************/
-#footer {
-    background-color: #333;
-    margin: 20px 20px 20px 20px
+.footer {
+    background-color: #666666;
+    margin: 10px 0px 10px 0px;
+    clear: both;
+}
+
+/*****************************************
+        sidebar
+******************************************/
+.sidebar{
+    margin: 10px 0px 10px 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    float: right;
+    width: 25%;
+    background-color: #cccccc;
+}
+.sidebar-title {
+    border-bottom: 1px solid black;
 }
