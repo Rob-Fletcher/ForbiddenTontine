@@ -5,7 +5,57 @@ body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+/***********************************
+     Header content
+***********************************/
 
-a {
-  color: #00B7FF;
+#header{
+    display: inline;
+    margin: auto;
+}
+#header img {
+    margin: auto;
+}
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin: 20px 20px 20px 20px;
+}
+.nav li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+.nav li:last-child {
+    border-right: none;
+    border-left: 1px solid #bbb;
+}
+.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.nav li a:hover {
+    background-color: #111;
+}
+
+/**************************************
+      main container
+**************************************/
+#main-container{
+    border: 3px solid #333;
+    margin: 20px 20px 20px 20px;
+    clear: both;
+}
+
+/****************************************
+         footer
+*****************************************/
+#footer {
+    background-color: #333;
+    margin: 20px 20px 20px 20px
 }

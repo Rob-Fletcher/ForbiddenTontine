@@ -4,5 +4,30 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    img(src='/images/TontineTitle.png')
-    block main
+    #header
+      img(src='/images/TontineTitle.png')
+      ul.nav
+        li 
+          a(href="#") Home
+        li
+          a(href="#") News
+        li
+          a(href="#") Contact
+        ul(style="float:right;list-style-type:none;")
+          li
+            a(href="#") login
+      
+      
+    block content
+    
+    
+    #footer
+      p Footer content goes in here
+
+
+    // Script includes.
+    script(type="text/javascript").
+      $(document).ready(fuction() {
+        console.log("Document loaded")
+      });
+    script(src="//code.jquery.com/jquery-1.12.0.min.js")
