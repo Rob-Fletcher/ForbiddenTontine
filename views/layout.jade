@@ -6,23 +6,30 @@ html
   body
     #header
       img(src='/images/TontineTitle.png')
-      ul.nav
-        li 
-          a(href="/") Home
-        li
-          a(href="/game") Game
-        li
-          a(href="#") News
-        li
-          a(href="#") Contact
-        ul(style="float:right;list-style-type:none;")
-          li
-            a(href="#") login
       
+      nav.navbar.navbar-default
+        .container-fluid
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-left
+              li: a(href="/") Home
+              li.dropdown
+                a.dropdown-toggle(href="#" data-toggle="dropdown" role="button") Game
+                  span.caret
+                ul.dropdown-menu
+                  li: a(href="/Game") Rules
+                  li: a(href="#") Start a Game
+                  li: a(href="#") Find an Existing Game
+              li: a(href="#") News
+              li: a(href="#") Contact
+              ul.nav.navbar-nav.navbar-right
+                li: a(href="#") login
+                li: a(href="#") Other
       
-    block content
+    .main-container  
+      block content
     
     .sidebar
+      //block sidebar
       h2.sidebar-title Sidebar Title.
       p Content under the sidebar title. Lots of things should go here
       
@@ -35,8 +42,12 @@ html
 
 
     // Script includes.
-    script(type="text/javascript").
-      $(document).ready(fuction() {
+    script.
+      $(document).ready(fuction(){
         console.log("Document loaded")
       });
+      
     script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
