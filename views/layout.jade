@@ -2,6 +2,7 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
     link(href='https://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css')
@@ -20,13 +21,13 @@ html
                 a.dropdown-toggle(href="#" data-toggle="dropdown" role="button") Game
                   span.caret
                 ul.dropdown-menu
-                  li: a(href="/Game") Rules
-                  li: a(href="#") Start a Game
-                  li: a(href="#") Find an Existing Game
-              li: a(href="#") News
-              li: a(href="#") Contact
+                  li: a(href="/rules") Rules
+                  li: a(href="/start") Start a Game
+                  li: a(href="/find") Find an Existing Game
+              li: a(href="/news") News
+              li: a(href="/contact") Contact
               ul.nav.navbar-nav.navbar-right
-                li: a(href="#") login
+                li: a(href="/login") login
                 li: a(href="#") Other
       
     .main-container  
@@ -42,7 +43,10 @@ html
     
     
     .footer
-      p Footer content goes in here
+      #connect
+        a(href="#"): i.fa.fa-rss
+        a(href="#"): i.fa.fa-facebook
+        a(href="#"): i.fa.fa-twitter
 
     // Script includes.
     script(src="//code.jquery.com/jquery-1.12.0.min.js")

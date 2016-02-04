@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 
@@ -7,9 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-/* GET Game page. */
-router.get('/game', function(req, res, next) {
-  res.render('GameOverview');
+router.get('/rules', function(req, res, next) {
+    res.render('rules');
+});
+
+router.get('/contact', function(req, res, next) {
+    res.render('contact');
 });
 
 module.exports = router;
