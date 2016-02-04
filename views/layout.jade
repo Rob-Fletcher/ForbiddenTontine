@@ -2,12 +2,16 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
+    link(href='https://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css')
+    // my style sheet
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     #header
       img(src='/images/TontineTitle.png')
       
-      nav.navbar.navbar-default
+      nav.navbar
         .container-fluid
           .collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-left
@@ -40,14 +44,12 @@ html
     .footer
       p Footer content goes in here
 
-
     // Script includes.
-    script.
-      $(document).ready(fuction(){
-        console.log("Document loaded")
-      });
-      
     script(src="//code.jquery.com/jquery-1.12.0.min.js")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
+    
+    script(type="text/javascript").
+      $(document).ready( function() {
+        console.log( "ready!" );
+      });
+      

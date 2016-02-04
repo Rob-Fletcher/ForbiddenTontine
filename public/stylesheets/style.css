@@ -5,6 +5,10 @@ body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+@font-face {
+    font-family: BW;
+    src: url(../BeyondWonderland.woff);
+}
 /***********************************
      Header content
 ***********************************/
@@ -12,6 +16,14 @@ body {
 #header{
 }
 #header img {
+}
+.navbar li a {
+    font-family: BW;
+    font-size: 30px;
+    color: black;
+}
+.container-fluid {
+    border-bottom: 1px solid black;
 }
 
 /**************************************
@@ -33,6 +45,9 @@ body {
 }
 .main-container-blog h2 {
     border-bottom: 1px solid black;
+}
+.main-container > p{
+    font-size: 20px;
 }
 
 /****************************************
