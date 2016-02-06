@@ -34,3 +34,6 @@ node_modules
 
 # OSX things
 .DS_*
+
+#MondoDB
+/data/db/*

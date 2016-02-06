@@ -4,9 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+
+//mongodb
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/tontinedb');
 
 // Routes
-var routes = require('./routes/routes');
 
 var app = express();
 
@@ -20,9 +25,30 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// make the db useable by the router
+//app.use(function(req, res, next){
+//    req.db = db;
+//    next();
+//});
+var flash = require('connect-flash');
+app.use(flash());
+
+var initPassport = require('./passport/init');
+initPassport(passport);
+
+
+var routes = require('./routes/routes')(passport);
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

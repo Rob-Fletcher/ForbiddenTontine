@@ -17,7 +17,7 @@ body {
 }
 #header img {
 }
-.navbar li a {
+.navbar .fancy {
     font-family: BW;
     font-size: 30px;
     color: black;
@@ -31,12 +31,8 @@ body {
 **************************************/
 .main-container{
     border: 2px solid #666666;
-    margin: 10px 0px 10px 0px;
     padding-left: 10px;
     padding-right: 10px;
-    clear: both;
-    float: left;
-    width: 70%;
 }
 .main-container-blog {
     background-color: #cccccc;
@@ -70,11 +66,8 @@ body {
         sidebar
 ******************************************/
 .sidebar{
-    margin: 10px 0px 10px 0px;
     padding-left: 10px;
     padding-right: 10px;
-    float: right;
-    width: 25%;
     background-color: #cccccc;
 }
 .sidebar-title {

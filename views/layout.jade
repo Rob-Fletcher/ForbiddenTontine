@@ -16,30 +16,47 @@ html
         .container-fluid
           .collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-left
-              li: a(href="/") Home
+              li: a.fancy(href="/") Home
               li.dropdown
-                a.dropdown-toggle(href="#" data-toggle="dropdown" role="button") Game
+                a.fancy.dropdown-toggle(href="#" data-toggle="dropdown" role="button") Game
                   span.caret
                 ul.dropdown-menu
-                  li: a(href="/rules") Rules
-                  li: a(href="/start") Start a Game
-                  li: a(href="/find") Find an Existing Game
-              li: a(href="/news") News
-              li: a(href="/contact") Contact
+                  li: a.fancy(href="/rules") Rules
+                  li: a.fancy(href="/start") Start a Game
+                  li: a.fancy(href="/find") Find an Existing Game
+              li: a.fancy(href="/news") News
+              li: a.fancy(href="/contact") Contact
               ul.nav.navbar-nav.navbar-right
-                li: a(href="/login") login
-                li: a(href="#") Other
+                li.dropdown
+                  if (user)
+                    a.fancy.dropdown-toggle(href="#" data-toggle="dropdown" role="button") #{user.username}
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                      li: a.fancy(href="/logout") Logout 
+                  if (!user)
+                    a.fancy.dropdown-toggle(href="#" data-toggle="dropdown" role="button") Login
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                          form(role='form', action="/register",method="post", style='max-width: 100px;')
+                          .form-group
+                              input.form-control(type='text', name="username", placeholder='Enter Username')
+                          .form-group
+                            input.form-control(type='password', name="password", placeholder='Password')
+                          button.btn.btn-default(type='submit') Submit
+                      li.divider
+                      li: a.fancy(href="/createUser") Create New User 
+                  
       
-    .main-container  
-      block content
-    
-    .sidebar
-      //block sidebar
-      h2.sidebar-title Sidebar Title.
-      p Content under the sidebar title. Lots of things should go here
-      
-      h2.sidebar-title Second Title.
-      p More sidebar content goes into here.
+    .row
+      .col-md-9
+        .main-container  
+          block content
+        
+      .col-md-3
+        .sidebar
+          include ./sidebar.jade
     
     
     .footer
