@@ -9,7 +9,7 @@ var localStrategy = require('passport-local').Strategy;
 
 //mongodb
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/tontinedb');
+mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost:27017/tontinedb');
 
 // Routes
 
