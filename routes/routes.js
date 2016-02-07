@@ -6,7 +6,7 @@ module.exports = function(passport) {
 
     /* GET home page. */
     router.get('/', function(req, res, next) {
-      res.render('index');
+      res.render('index', {user: req.user});
     });
 
     router.get('/rules', function(req, res, next) {
@@ -18,13 +18,22 @@ module.exports = function(passport) {
     });
 
     // User login and registration routes.
+    router.get('/welcomeNew', function(req, res, next){
+        res.render('welcomeNew', {user: req.user});
+    });
+
+    router.get('/login', function(req, res, next) {
+        res.render('login', {message: req.flash('message')});
+    });
+
     router.post('/login', passport.authenticate('login', {
         successRedirect: '/',
+        failureRedirect: '/login',
         failureFlash: true
     }));
 
     router.get('/createUser', function(req, res, next) {
-        res.render('createUser');
+        res.render('createUser', {message: req.flash('message')});
     });
 
     router.post('/createUser', passport.authenticate('signup', {

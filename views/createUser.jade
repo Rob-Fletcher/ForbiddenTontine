@@ -2,17 +2,14 @@ extends layout
 
 block content
     h2 Create a new user.
-    form(role='form', action="/register",method="post", style='max-width: 300px;')
-    .form-group
-        input.form-control(type='text', name="username", placeholder='Enter Username')
-    .form-group
-        input.form-control(type='password', name="password", placeholder='Password')
-    .form-group
-        input.form-control(type='text', name="FirstName", placeholder='First Name')
-    .form-group
-        input.form-control(type='text', name="LastName", placeholder='Last Name')
-    button.btn.btn-default(type='submit') Submit 
-    &nbsp
-    &nbsp
-    a(href='/')
-        button.btn.btn-primary(type="button") Cancel
+    if message
+        h1 #{message}
+    div.signup-wall
+        form(class='form-signin', action='/createUser', method='POST')
+            input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
+            input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+            input(type='email', name='email', class='form-control', placeholder='Email',required)
+            input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
+            input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
+            button(class='btn btn-lg btn-primary btn-block', type='submit') Register
+            span.clearfix

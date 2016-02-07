@@ -1,14 +1,16 @@
 var LocalStrategy   = require('passport-local').Strategy;
-var User = require('../models/user');
+var User = require('../../../data/models/user');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
 
+	console.log("starting signup.js");
 	passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
 
+			console.log("inside of signup function");
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
                 User.findOne({ 'username' :  username }, function(err, user) {
@@ -29,9 +31,9 @@ module.exports = function(passport){
                         // set the user's local credentials
                         newUser.username = username;
                         newUser.password = createHash(password);
-                        newUser.email = req.param('email');
-                        newUser.firstName = req.param('firstName');
-                        newUser.lastName = req.param('lastName');
+                        newUser.email = req.body.email;
+                        newUser.firstName = req.body.firstName;
+                        newUser.lastName = req.body.lastName;
 
                         // save the user
                         newUser.save(function(err) {
@@ -47,6 +49,7 @@ module.exports = function(passport){
             };
             // Delay the execution of findOrCreateUser and execute the method
             // in the next tick of the event loop
+			console.log("Calling find or create user");
             process.nextTick(findOrCreateUser);
         })
     );

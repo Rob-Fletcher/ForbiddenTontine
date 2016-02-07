@@ -1,6 +1,6 @@
 var login = require('./login');
 var signup = require('./signup');
-var User = require('/data/models/user');
+var User = require('../../../data/models/user');
 
 module.exports = function(passport){
 

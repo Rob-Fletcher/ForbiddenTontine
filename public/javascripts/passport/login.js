@@ -1,14 +1,16 @@
 var LocalStrategy   = require('passport-local').Strategy;
-var User = require('../models/user');
+var User = require('../../../data/models/user');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
 
+	console.log('starting login.js');
 	passport.use('login', new LocalStrategy({
             passReqToCallback : true
         },
         function(req, username, password, done) {
             // check in mongo if a user with username exists or not
+			console.log('inside of login local strategy');
             User.findOne({ 'username' :  username },
                 function(err, user) {
                     // In case of any error, return using the done method
@@ -26,6 +28,8 @@ module.exports = function(passport){
                     }
                     // User and password both match, return user from done method
                     // which will be treated like success
+					console.log('Found user: '+username);
+					console.log('logging in.');
                     return done(null, user);
                 }
             );

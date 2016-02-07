@@ -38,15 +38,9 @@ html
                     a.fancy.dropdown-toggle(href="#" data-toggle="dropdown" role="button") Login
                       span.caret
                     ul.dropdown-menu
-                      li
-                          form(role='form', action="/register",method="post", style='max-width: 100px;')
-                          .form-group
-                              input.form-control(type='text', name="username", placeholder='Enter Username')
-                          .form-group
-                            input.form-control(type='password', name="password", placeholder='Password')
-                          button.btn.btn-default(type='submit') Submit
-                      li.divider
-                      li: a.fancy(href="/createUser") Create New User 
+                        li: a.fancy(href="/login") Login 
+                        li.divider
+                        li: a.fancy(href="/createUser") Create New User 
                   
       
     .row

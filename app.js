@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var flash = require('connect-flash');
 app.use(flash());
 
-var initPassport = require('./passport/init');
+var initPassport = require('./public/javascripts/passport/init');
 initPassport(passport);
 
 
