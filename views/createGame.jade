@@ -1,0 +1,55 @@
+
+extends layout
+
+block content
+    h2 Create a new game.
+    .row
+        .col-md-12
+            form( action='/createUser', method='POST')
+                    fieldset.form-group.col-md-8
+                        label(for="gameName") Game Name
+                        input#gameName(type='text', name='gameName', class='form-control', placeholder='Name',required, autofocus)
+                        small.text-muted This name will help other players find this game.
+
+                    fieldset.form-group.col-md-8
+                        label(for="maxNumOfPlayers") Maximum Number of Players
+                        select#maxNumOfPlayers(class='form-control')
+                            each val in [1,2,3,4,5,6,7,8,9,10]
+                                option= val
+                        small.text-muted Allows you to limit the total number of players that are allowed to join this game.
+
+                    fieldset.form-group.col-md-6
+                        label(for="startdate") Game Start Date
+                        input(type='text' class="form-control" id="datepicker startdate")
+                        //span.input-group-addon
+                        span.glyphicon.glyphicon-calendar
+                                
+                    fieldset.form-group.col-md-6
+                        label(for="enddate") Game End Date
+                        input(type='text' class="form-control" id="datepicker enddate")
+                        //span.input-group-addon
+                        span.glyphicon.glyphicon-calendar
+                        
+                    fieldset.form-group.col-md-3
+                        label(for="starttime") Game Start Time
+                        select#starttime(class="form-control")
+                            each val in [2,4,6,8,10,12]
+                                option= val
+                        label(class="radio-inline")
+                            input(type="radio" name="optradio")
+                            |AM
+                        label(class="radio-inline")
+                            input(type="radio" name="optradio")
+                            |PM
+                            
+                    fieldset.form-group.col-md-3
+                        label(for="endtime") Game End Time
+                        select#endtime(class="form-control")
+                            each val in [2,4,6,8,10,12]
+                                option= val
+                        label(class="radio-inline")
+                            input(type="radio" name="optradio")
+                            |AM
+                        label(class="radio-inline")
+                            input(type="radio" name="optradio")
+                            |PM

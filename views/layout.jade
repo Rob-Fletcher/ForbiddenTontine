@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
     link(href='https://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css')
@@ -22,8 +23,8 @@ html
                   span.caret
                 ul.dropdown-menu
                   li: a.fancy(href="/rules") Rules
-                  li: a.fancy(href="/start") Start a Game
-                  li: a.fancy(href="/find") Find an Existing Game
+                  li: a.fancy(href="/game/createGame") Start a Game
+                  li: a.fancy(href="/game/findGame") Find an Existing Game
               li: a.fancy(href="/news") News
               li: a.fancy(href="/contact") Contact
               ul.nav.navbar-nav.navbar-right
@@ -61,8 +62,15 @@ html
 
     // Script includes.
     script(src="//code.jquery.com/jquery-1.12.0.min.js")
+    script(src="//code.jquery.com/jquery-1.10.2.js")
+    script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
     
+    script.
+        $(function() {
+          $( "#datepicker" ).datepicker();
+        });
+        
     script(type="text/javascript").
       $(document).ready( function() {
         console.log( "ready!" );

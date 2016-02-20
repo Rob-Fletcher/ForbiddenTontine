@@ -1,18 +1,20 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('GameInfo', {
+var gameInfoSchema = mongoose.Schema({
     startTime: Date,
     endTime:   Date,
-    players: [{
-        _id: Number,
+    playersInGame: [{
         status: String,
+        user: {type: mongoose.Schema.ObjectID, ref: 'User'}
     }]
     events: [{
         target: Number,
         source: Number,
         eventTime: Date,
         eventType: String,
-        image: imageFile
+        image: String
     }]
 
 });
+
+module.exports = mongoose.model('GameInfo', gameInfoSchema);

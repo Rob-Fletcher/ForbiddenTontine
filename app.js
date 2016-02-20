@@ -47,7 +47,9 @@ initPassport(passport);
 
 
 var routes = require('./routes/routes')(passport);
+var gameRoutes = require('./routes/gameRoutes');
 app.use('/', routes);
+app.use('/game', gameRoutes);
 
 
 // catch 404 and forward to error handler

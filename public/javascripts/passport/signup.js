@@ -4,13 +4,11 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
 
-	console.log("starting signup.js");
 	passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
 
-			console.log("inside of signup function");
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
                 User.findOne({ 'username' :  username }, function(err, user) {
