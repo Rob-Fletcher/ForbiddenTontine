@@ -2,10 +2,11 @@
 extends layout
 
 block content
+    h2 Welcome #{user.username}
     h2 Create a new game.
     .row
         .col-md-12
-            form( action='/createUser', method='POST')
+            form( action='/game/createGame', method='POST')
                     fieldset.form-group.col-md-8
                         label(for="gameName") Game Name
                         input#gameName(type='text', name='gameName', class='form-control', placeholder='Name',required, autofocus)

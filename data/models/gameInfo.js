@@ -8,8 +8,8 @@ var gameInfoSchema = mongoose.Schema({
         user: {type: mongoose.Schema.ObjectID, ref: 'User'}
     }]
     events: [{
-        target: Number,
-        source: Number,
+        target: mongoose.Schema.ObjectID,
+        source: mongoose.Schema.ObjectID,
         eventTime: Date,
         eventType: String,
         image: String
