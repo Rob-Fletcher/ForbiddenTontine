@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 
 var gameInfoSchema = mongoose.Schema({
+    gameName: String,
+    gameMaster: mongoose.Schema.ObjectID,
+    maxNPlayers: Number,
     startTime: Date,
     endTime:   Date,
     playersInGame: [{
