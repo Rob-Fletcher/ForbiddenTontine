@@ -5,7 +5,7 @@ block content
     h2 Create a new game.
     .row
         .col-md-12
-            form( action='/createUser', method='POST')
+            form( action='/createGame', method='POST')
                     fieldset.form-group.col-md-8
                         label(for="gameName") Game Name
                         input#gameName(type='text', name='gameName', class='form-control', placeholder='Name',required, autofocus)
@@ -23,13 +23,13 @@ block content
                         input(type='text' class="form-control" id="datepicker startdate")
                         //span.input-group-addon
                         span.glyphicon.glyphicon-calendar
-                                
+
                     fieldset.form-group.col-md-6
                         label(for="enddate") Game End Date
                         input(type='text' class="form-control" id="datepicker enddate")
                         //span.input-group-addon
                         span.glyphicon.glyphicon-calendar
-                        
+
                     fieldset.form-group.col-md-3
                         label(for="starttime") Game Start Time
                         select#starttime(class="form-control")
@@ -41,7 +41,7 @@ block content
                         label(class="radio-inline")
                             input(type="radio" name="optradio")
                             |PM
-                            
+
                     fieldset.form-group.col-md-3
                         label(for="endtime") Game End Time
                         select#endtime(class="form-control")
