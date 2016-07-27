@@ -9,7 +9,7 @@ html
     link(href='https://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css')
     // my style sheet
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  body(onload="init();")
     .header
       img(src='/images/TontineTitle.png')
 
@@ -45,16 +45,11 @@ html
 
 
     .row
-      .col-md-9
-        .main-container
-          block content
-
-      .col-md-3
-        .sidebar
-          include ./sidebar.jade
+      #main-container.col-md-12
+        block content
 
 
-    .footer
+    #footer
       #connect
         a(href="#"): i.fa.fa-rss
         a(href="#"): i.fa.fa-facebook

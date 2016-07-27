@@ -1,0 +1,47 @@
+extends gameLayout
+
+block content
+    script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")
+    script(type="text/javascript").
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'Player' });
+        dataTable.addColumn({ type: 'string', id: 'Event'})
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'Death' });
+        dataTable.addRows([
+          [ 'Daniel', '', new Date(2016, 7, 1), new Date(2016, 7, 15) ],
+          [ 'Daniel', 'Death', new Date(2016, 7, 15), new Date(2016, 7, 15) ],
+          [ 'Alan', '',     new Date(2016, 7, 1), new Date(2016, 7, 18) ],
+          [ 'Alan', 'Death',     new Date(2016, 7, 18), new Date(2016, 7, 18) ],
+          [ 'Alan', 'Sick', new Date(2016, 7, 4), new Date(2016, 7, 6) ],
+          [ 'Rob', '', new Date(2016, 7, 1), new Date(2016, 7, 26) ],
+          [ 'Rob', 'Sick', new Date(2016, 7, 10), new Date(2016, 7, 13) ]
+        ]);
+
+        var options = {
+            timeline: {groupByRowLabel: true},
+            backgroundColor: '#efe0b9'
+        };
+        
+        function placeMarker(dataTable) {
+            var cli = this.getChartLayoutInterface();
+            var chartArea = cli.getChartAreaBoundingBox();
+            //document.querySelector('.overlay-marker').style.top = Math.floor(cli.getYLocation(dataTable.getValue(5, 1))) - 50 + "px";
+            //document.querySelector('.overlay-marker').style.left = Math.floor(cli.getXLocation(5)) - 10 + "px";
+        };
+        //google.visualization.events.addListener(chart, 'ready',
+        //        placeMarker.bind(chart, dataTable));
+        chart.draw(dataTable, options);
+      }
+
+    h2 Sample Game Overveiw
+
+    div(id="timeline")
+    .overlay-marker
+        img(src="/images/22-skull-n-bones-icon.png")

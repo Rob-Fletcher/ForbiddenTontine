@@ -29,12 +29,12 @@ body {
 /**************************************
       main container
 **************************************/
-.main-container{
+#main-container{
     border: 2px solid #666666;
     padding-left: 10px;
     padding-right: 10px;
 }
-.main-container-blog {
+#main-container-blog {
     background-color: #cccccc;
     padding-left: 10px;
     padding-right: 10px;
@@ -42,14 +42,14 @@ body {
 .main-container-blog h2 {
     border-bottom: 1px solid black;
 }
-.main-container > p{
+#main-container > p{
     font-size: 20px;
 }
 
 /****************************************
          footer
 *****************************************/
-.footer {
+#footer {
     background-color: #666666;
     margin: 10px 0px 10px 0px;
     clear: both;
@@ -65,11 +65,19 @@ body {
 /*****************************************
         sidebar
 ******************************************/
-.sidebar{
+#sidebar{
     padding-left: 10px;
     padding-right: 10px;
     background-color: #cccccc;
 }
 .sidebar-title {
     border-bottom: 1px solid black;
+}
+
+/*****************************************
+        Chart
+******************************************/
+#timeline{
+    height: 100%;
+    width: 100%;
 }

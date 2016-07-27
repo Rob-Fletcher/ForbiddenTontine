@@ -45,16 +45,14 @@ html
                   
       
     .row
-      .col-md-9
-        .main-container  
+      #main-container.col-md-9
           block content
         
-      .col-md-3
-        .sidebar
+      #sidebar.col-md-3 
           include ./sidebar.jade
     
     
-    .footer
+    #footer
       #connect
         a(href="#"): i.fa.fa-rss
         a(href="#"): i.fa.fa-facebook
