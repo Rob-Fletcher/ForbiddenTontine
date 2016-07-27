@@ -10,11 +10,15 @@ module.exports = function(passport) {
     });
 
     router.get('/rules', function(req, res, next) {
-        res.render('rules');
+        res.render('rules', {user: req.user});
+    });
+
+    router.get('/news', function(req, res, next) {
+        res.render('news', {user: req.user});
     });
 
     router.get('/contact', function(req, res, next) {
-        res.render('contact');
+        res.render('contact', {user: req.user});
     });
 
     // User login and registration routes.
