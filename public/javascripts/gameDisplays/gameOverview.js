@@ -1,8 +1,8 @@
 var canvas;
 var stage;
-var barPadding = 15;
+var barPadding = 25;
+var axisPadding = 15;
 var maxValue = 50;
-var count;
 var barValues = [];
 var bars = [];
 ///  Temporary variables for development
@@ -13,6 +13,10 @@ var currentDate = new Date(2016, 8, 26);
 var startDate = new Date(2016, 8, 10);
 var numDays = 8;
 var barWidth = 30;
+var axisLeftMargin = 60;
+var axisRightMargin = 20;
+var tickLength = 20;
+var axisLabelOffset = 5;
 var players = [
     "Danny",
     "Alan",
@@ -25,7 +29,7 @@ var numPlayers = players.length;
 
 function init() {
     // create a new stage and point it at our canvas:
-    canvas = document.getElementById("timeline");
+    canvas = document.getElementById("timeline-canvas");
     stage = new createjs.Stage(canvas);
 
     // generate some random data (between 4 and 10, the |0 floors (for positive numbers))
@@ -35,31 +39,40 @@ function init() {
         barValues.push(i);
     }
 
+    // Parent container for all of the plot. x = 0 will be the start date.
+    var graphPlane = new createjs.Container();
+    // hold all of the parts of the axis so that it can all be moved together.
+    var axisContainer = new createjs.Container();
+
+    // TODO:  Move all of the axis parts in to the container so that explititly putting in all
+    //  of the padding and bar heights is unnecessary. These should just go in once in the placement
+    //  of the entire container.
+
     // create a shape to draw the background into:
-    var bg = new createjs.Shape();
-    stage.addChild(bg);
+    var axis = new createjs.Shape();
+    stage.addChild(axis);
 
     // Draw axis on the bottom
-    bg.graphics.setStrokeStyle(2)
+    axis.graphics.setStrokeStyle(2)
         .beginFill("black")
         .beginStroke("black")
-        .moveTo(60, (barWidth+barPadding)*(numPlayers+1) + barPadding)
-        .lineTo(canvas.width - 20, (barWidth+barPadding)*(numPlayers+1) + barPadding);
+        .moveTo(axisLeftMargin, (barWidth+barPadding)*(numPlayers+1) + axisPadding)
+        .lineTo(canvas.width - axisRightMargin, (barWidth+barPadding)*(numPlayers+1) + axisPadding);
 
     // Draw tick marks on the axis for each day
     for(var day=0; day < numDays+1; day++){
-        bg.graphics.setStrokeStyle(2)
+        axis.graphics.setStrokeStyle(2)
             .beginStroke("black")
             //.moveTo(60 + day*(canvas.width-80)/numDays, canvas.height - 50)
             //.lineTo(60 + day*(canvas.width-80)/numDays, canvas.height - 30);
-            .moveTo(60 + day*(canvas.width-80)/numDays, (barWidth+barPadding)*(numPlayers+1) + barPadding)
-            .lineTo(60 + day*(canvas.width-80)/numDays, (barWidth+barPadding)*(numPlayers+1) + barPadding + 20);
+            .moveTo(axisLeftMargin + day*(canvas.width-(axisLeftMargin + axisRightMargin))/numDays, (barWidth+barPadding)*(numPlayers+1) + axisPadding)
+            .lineTo(axisLeftMargin + day*(canvas.width-(axisLeftMargin + axisRightMargin))/numDays, (barWidth+barPadding)*(numPlayers+1) + axisPadding + tickLength);
 
         //Add the numbers on the axis. This will get replaced with dates eventually.
         axisLabel = new createjs.Text(day, "24px Arial", "#000");
         axisLabel.textAlign = "center";
         axisLabel.x = 60 + day*(canvas.width-80)/numDays;
-        axisLabel.y = (barWidth+barPadding)*(numPlayers +1) + barPadding + 25;
+        axisLabel.y = (barWidth+barPadding)*(numPlayers +1) + barPadding + tickLength + axisLabelOffset;
         stage.addChild(axisLabel);
 
     }
@@ -72,10 +85,24 @@ function init() {
     label.y = 20;
     stage.addChild(label);
 
+
+
     // draw the bars:
     for (i = 0; i < numPlayers; i++) {
         // each bar is assembled in its own Container, to make them easier to work with:
         var bar = new createjs.Container();
+
+        var pName = new createjs.Text(players[i], "16px Arial", "#000");
+        pName.x = -50;
+        pName.y = 0;
+
+        var pIcon = new createjs.Bitmap("/images/sample_player_icon.png");
+        pIcon.regX = pIcon.image.width / 2;
+        pIcon.regY = pIcon.image.height / 2;
+        pIcon.x = 0;
+        pIcon.y = barWidth / 2;
+        pIcon.scaleX = (barWidth + barPadding/2)/ pIcon.image.width;
+        pIcon.scaleY = (barWidth + barPadding/2)/ pIcon.image.height;
 
         // this will determine the color of each bar, save as a property of the bar for use in drawBar:
         var hue = bar.hue = i / numBars * 360;
@@ -87,19 +114,25 @@ function init() {
 
         // add all of the elements to the bar Container:
         //bar.addChild(right, front, top, tab, value, label);
-        bar.addChild(front);
+        bar.addChild(front, pName, pIcon);
+        //bar.addChild(namePlate);
+
 
         // position the bar, and add it to the stage:
         //bar.x = i * (barWidth + barPadding) + 60;
         //bar.y = canvas.height - 70;
-        bar.x = 60;
+        bar.x = 60;   // was 60
         bar.y = 60 + i * (barWidth+barPadding)  ;
+
 
         stage.addChild(bar);
         bars.push(bar);
 
         // draw the bar
         drawBar(bar, barValues[i]);
+        pIcon.image.onload = function() {
+            stage.update();
+        };
     }
     stage.update();
 
@@ -121,8 +154,7 @@ function drawBar(bar, value) {
     var length = value*(canvas.width-80)/numDays;
 
 
-    // scale the front panel, and position the top:
+    // scale the bar to the proper length
     bar.getChildAt(0).scaleX = length;
-    //bar.getChildAt(2).y = -h + 0.5; // the 0.5 eliminates gaps from numerical precision issues.
 
 }
