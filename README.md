@@ -1,6 +1,14 @@
- ForbiddenTontine
+# ForbiddenTontine
 
-##Local test installation
+You and your friends have entered into a Tontine, an agreement that the last
+living member of your group will gain the wealth of all. What are you willing to
+do to ensure that you are the one to take home the prize?
+
+Forbidden Tontine is a game that you play with your friends spanning over the
+time of several days or weeks. Each of will try to outlast the others by any means
+necessary.
+
+## Local test installation
 
 First you must install Node.js and Mongodb. Go to the Node.js website, download
 and install. Mongodb should be able to be installed from a package manager. On a

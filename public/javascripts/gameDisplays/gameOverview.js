@@ -8,7 +8,7 @@ var bars = [];
 ///  Temporary variables for development
 //  These are things that eventually will be gathered from
 //  the database or calculated.
-var separatorSpacing = 20;
+var separatorSpacing = 30;
 var currentDate = new Date(2016, 8, 26);
 var startDate = new Date(2016, 8, 10);
 var numDays = 8;
@@ -99,10 +99,10 @@ function init() {
         var pIcon = new createjs.Bitmap("/images/sample_player_icon.png");
         pIcon.regX = pIcon.image.width / 2;
         pIcon.regY = pIcon.image.height / 2;
-        pIcon.x = 0;
+        pIcon.x = 20;
         pIcon.y = barWidth / 2;
-        pIcon.scaleX = (barWidth + barPadding/2)/ pIcon.image.width;
-        pIcon.scaleY = (barWidth + barPadding/2)/ pIcon.image.height;
+        pIcon.scaleX = 0.5*(barWidth + barPadding/2)/ pIcon.image.width;
+        pIcon.scaleY = 0.5*(barWidth + barPadding/2)/ pIcon.image.height;
 
         // this will determine the color of each bar, save as a property of the bar for use in drawBar:
         var hue = bar.hue = i / numBars * 360;
