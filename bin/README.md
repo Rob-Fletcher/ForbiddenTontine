@@ -48,7 +48,7 @@ To run the tests one simply needs to type:
     nosetests -v
 
 This will produce a report on the result of the tests.
-Now try changing the line int =Square.py=:
+Now try changing the line int -=Square.py=-:
 
 ```python
     def getArea(self):
